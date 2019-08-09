@@ -1,0 +1,12 @@
+version: "3"
+services:
+  tad:
+    image: postgres:9.6
+    container_name: "postgres"
+    environment:
+      - POSTGRES_DB=usradm
+      - POSTGRES_ROOT_PASSWORD=password
+    volumes:
+      - ".var/lib/postgres:/var/lib/postgres"
+    ports:
+      - 5432:5432
