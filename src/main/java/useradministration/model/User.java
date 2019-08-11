@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
+	//Criado sequencia para o uso do id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
 	@SequenceGenerator(name = "users_seq_gen", sequenceName = "users_id_seq")
 	private Long id;
