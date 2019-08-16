@@ -2,6 +2,8 @@ package useradministration.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ public class UserController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();
 		}
-		logger.info("retorna 201 - creado com sucesso");
+		logger.info("retorna 201 - criado com sucesso");
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
@@ -66,8 +68,8 @@ public class UserController {
 	 * @param name
 	 * @return lista de usuarios
 	 */
-	@GetMapping(path = "/usuario/{name}")
-	public ResponseEntity<?> findByName(@PathVariable("name") String name) {
+	@GetMapping(path = "/usuario")
+	public ResponseEntity<?> findByName(@PathParam("name") String name) {
 		List<User> users = null;
 		try {
 			users = this.userService.searchByName(name);

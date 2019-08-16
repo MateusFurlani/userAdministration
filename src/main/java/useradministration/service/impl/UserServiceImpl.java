@@ -42,14 +42,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modifyUserById(Long id, User newAttributesOfUser) throws Exception {
-		User user = userRepository.findById(id).orElseThrow(() -> new Exception("Usuario não encontrado"));
+		userRepository.findById(id).orElseThrow(() -> new Exception("Usuario não encontrado"));
 		UserValidators validator = new UserValidators();
 		
-		user.setName(newAttributesOfUser.getName());
 		validator.cpfValidator(newAttributesOfUser.getCpf());
-		user.setCpf(newAttributesOfUser.getCpf());
 		validator.dateValidator(newAttributesOfUser.getDateOfBirth());
-		user.setDateOfBirth(newAttributesOfUser.getDateOfBirth());
+		
+		newAttributesOfUser.setId(id);
+		userRepository.save(newAttributesOfUser);
 	}
 
 }
