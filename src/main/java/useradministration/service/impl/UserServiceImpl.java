@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import useradministration.model.User;
 import useradministration.repository.UserRepository;
-import useradministration.rules.UserRules;
 import useradministration.service.UserService;
 import useradministration.validation.UserValidators;
 
@@ -43,9 +42,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modifyUserById(Long id, User newAttributesOfUser) throws Exception {
-		UserRules userRules = new UserRules();
 		User user = userRepository.findById(id).orElseThrow(() -> new Exception("Usuario não encontrado"));
-		userRules.updateUser(user, newAttributesOfUser);
+		UserValidators validator = new UserValidators();
+		
+		user.setName(newAttributesOfUser.getName());
+		validator.cpfValidator(newAttributesOfUser.getCpf());
+		user.setCpf(newAttributesOfUser.getCpf());
+		validator.dateValidator(newAttributesOfUser.getDateOfBirth());
+		user.setDateOfBirth(newAttributesOfUser.getDateOfBirth());
 	}
 
 }
