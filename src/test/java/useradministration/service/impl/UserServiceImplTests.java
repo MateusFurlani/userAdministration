@@ -1,10 +1,6 @@
 package useradministration.service.impl;
 
-
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTests {
 	
 	//não consegui executar o teste, tarefa futura
