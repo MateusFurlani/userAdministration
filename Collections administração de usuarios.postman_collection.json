@@ -88,14 +88,20 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:8080/usuario/Mateus",
+					"raw": "localhost:8080/usuario/?name=Mateus",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"usuario",
-						"Mateus"
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Mateus"
+						}
 					]
 				}
 			},
